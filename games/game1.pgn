@@ -1,0 +1,40 @@
+[Event "Live Chess"]
+[Site "Chess.com"]
+[Date "2022.12.14"]
+[Round "-"]
+[White "Craskbee"]
+[Black "DRJ2"]
+[Result "0-1"]
+[CurrentPosition "8/6k1/5p2/6p1/p4n2/Pp6/4q3/2r3K1 w - -"]
+[Timezone "UTC"]
+[ECO "C50"]
+[ECOUrl "https://www.chess.com/openings/Giuoco-Piano-Game-Giuoco-Pianissimo-Variation-4...Nf6"]
+[UTCDate "2022.12.14"]
+[UTCTime "19:54:44"]
+[WhiteElo "906"]
+[BlackElo "957"]
+[TimeControl "180+2"]
+[Termination "DRJ2 won by checkmate"]
+[StartTime "19:54:44"]
+[EndDate "2022.12.14"]
+[EndTime "20:05:31"]
+[Link "https://www.chess.com/game/live/64786517613"]
+[WhiteUrl "https://images.chesscomfiles.com/uploads/v1/user/82550022.e46da754.50x50o.bc8fc06be776.jpeg"]
+[WhiteCountry "2"]
+[WhiteTitle ""]
+[BlackUrl "https://www.chess.com/bundles/web/images/noavatar_l.84a92436.gif"]
+[BlackCountry "291"]
+[BlackTitle ""]
+
+1. e4 e5 2. Nf3 Nc6 3. Bc4 Nf6 4. d3 Bc5 5. Bg5 O-O 6. O-O h6 7. Bh4 Be7 8. Re1
+d6 9. h3 b6 10. Nbd2 Bb7 11. Nf1 a6 12. c3 b5 13. Bb3 a5 14. d4 a4 15. Bc2 b4
+16. a3 b3 17. Bd3 Ba6 18. Bxa6 Rxa6 19. d5 Na5 20. Ng3 Nc4 21. Rb1 Nb6 22. Nf5
+Re8 23. Nd2 Nbd7 24. Qg4 Nxg4 25. hxg4 Bxh4 26. g3 Bg5 27. Nf3 Nc5 28. c4 Ra8
+29. Kg2 g6 30. N5h4 Nd3 31. Red1 Nc5 32. Nxg5 Qxg5 33. f3 Rec8 34. Rf1 Qd2+ 35.
+Rf2 Qg5 36. Kh3 c6 37. f4 exf4 38. gxf4 Qe7 39. Re1 cxd5 40. Rfe2 dxe4 41. f5 g5
+42. Ng2 Re8 43. Ne3 Qb7 44. Nd5 Nd3 45. Rd1 Nf4+ 46. Kg3 Nxe2+ 47. Kf2 Nf4 48.
+Nf6+ Kg7 49. Nxe8+ Rxe8 50. Ke3 Nd3 51. c5 dxc5 52. Rf1 f6 53. Rd1 c4 54. Rd2
+Qc7 55. Ke2 Qh2+ 56. Ke3 Qg3+ 57. Kd4 Qxg4 58. Kxc4 Rc8+ 59. Kd4 Qxf5 60. Ke3 h5
+61. Kd4 h4 62. Ke3 h3 63. Kd4 Rh8 64. Kc3 h2 65. Rxh2 Rxh2 66. Kc4 Rxb2 67. Kc3
+Rc2+ 68. Kd4 Qd7+ 69. Ke3 Nf4 70. Kxe4 Rc4+ 71. Ke3 Qe6+ 72. Kf3 Rc3+ 73. Kf2
+Qe2+ 74. Kg1 Rc1# 0-1

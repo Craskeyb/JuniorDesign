@@ -1,0 +1,16 @@
+[Event "Live Chess"]
+[Site "Chess.com"]
+[Date "2023.01.25"]
+[Round "?"]
+[White "Craskbee"]
+[Black "xaine24"]
+[Result "0-1"]
+[ECO "B14"]
+[WhiteElo "938"]
+[BlackElo "931"]
+[TimeControl "300"]
+[EndTime "12:52:39 PST"]
+[Termination "xaine24 won by resignation"]
+
+1. e4 c6 2. d4 d5 3. exd5 cxd5 4. c4 Nf6 5. Nc3 e6 6. Nf3 Bb4 7. Qa4+ Nc6 8. Bd2
+Bd7 9. cxd5 Nxd4 10. Qxb4 Nc2+ 0-1
