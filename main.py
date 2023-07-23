@@ -17,7 +17,7 @@ for moves in gameList[0].mainline_moves():
     moveArr.append(moves)
     #print(board.board_fen())
 
-for i in range(0,25):
+for i in range(0,moveArr.len()):
     board.push(moveArr[i])
 
 valid_fen = board.board_fen()
