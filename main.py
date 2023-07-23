@@ -7,7 +7,9 @@ from pgnReader import gameRead
 print("Welcome to the Chess Recall Program!")
 print("\n-------------------------------------")
 
-gameList = gameRead()
+gameList, moveCounts = gameRead()
 
-for move in gameList[0].mainline_moves():
-    print(move)
+board = chess.Board()
+
+print(gameList[0])
+print(moveCounts[0])

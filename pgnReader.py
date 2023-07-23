@@ -8,6 +8,7 @@ def gameRead():
     
     #Create an empty list for loaded games/filenames
     gameList = []
+    moveCounts = []
     fileList = [] 
     filename = ''
 
@@ -39,6 +40,7 @@ def gameRead():
         else:
             print("\nSuccess! Game added to collection")
             gameList.append(game)
+            moveCounts.append(movect)
             fileList.append(filename)
     
     
@@ -73,9 +75,10 @@ def gameRead():
             else:
                 print("\nSuccess! Game added to collection")
                 gameList.append(game)
+                moveCounts.append(movect)
                 fileList.append(filename)
                 continue
     
-    #After we load in our games, we need to convert the pgn's into FEN format
+    
         else:
-            return gameList
+            return gameList, moveCounts
