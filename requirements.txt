@@ -1,0 +1,3 @@
+This program uses the python-chess library to parse PGN files and step through games.
+The documentation for this library can be found at:
+  - https://pypi.org/project/chess/
