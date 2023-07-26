@@ -1,0 +1,35 @@
+[Event "Live Chess"]
+[Site "Chess.com"]
+[Date "2022.12.14"]
+[Round "-"]
+[White "scatterbrain"]
+[Black "Craskbee"]
+[Result "0-1"]
+[CurrentPosition "1K1q4/QP3pk1/8/7p/8/P7/5P2/2r5 w - -"]
+[Timezone "UTC"]
+[ECO "E32"]
+[ECOUrl "https://www.chess.com/openings/Nimzo-Indian-Defense-Classical-Variation-4...O-O-5.a3"]
+[UTCDate "2022.12.14"]
+[UTCTime "20:05:28"]
+[WhiteElo "969"]
+[BlackElo "925"]
+[TimeControl "180+2"]
+[Termination "Craskbee won by checkmate"]
+[StartTime "20:05:28"]
+[EndDate "2022.12.14"]
+[EndTime "20:13:58"]
+[Link "https://www.chess.com/game/live/64787505279"]
+[WhiteUrl "https://www.chess.com/bundles/web/images/noavatar_l.84a92436.gif"]
+[WhiteCountry "54"]
+[WhiteTitle ""]
+[BlackUrl "https://images.chesscomfiles.com/uploads/v1/user/82550022.e46da754.50x50o.bc8fc06be776.jpeg"]
+[BlackCountry "2"]
+[BlackTitle ""]
+
+1. d4 Nf6 2. c4 e6 3. Nc3 Bb4 4. Qc2 O-O 5. a3 Be7 6. e4 d5 7. Bg5 h6 8. Bxf6
+Bxf6 9. e5 Bg5 10. Nf3 Be7 11. cxd5 exd5 12. Be2 Bg4 13. h3 Bxf3 14. Bxf3 c6 15.
+O-O Bh4 16. b4 Nd7 17. b5 c5 18. dxc5 Nxc5 19. Nxd5 Nd7 20. Rfe1 Re8 21. g3 Bg5
+22. h4 Bxh4 23. gxh4 Nxe5 24. Qf5 Nxf3+ 25. Qxf3 Rxe1+ 26. Rxe1 Qd6 27. Ne7+ Kh7
+28. Qxb7 Re8 29. Qxa7 g6 30. b6 Kg7 31. b7 h5 32. Nxg6 Rxe1+ 33. Kg2 Qxg6+ 34.
+Kh3 Qg4+ 35. Kh2 Qg1+ 36. Kh3 Qh1+ 37. Kg3 Rg1+ 38. Kf4 Qxh4+ 39. Ke5 Re1+ 40.
+Kd6 Qf6+ 41. Kc7 Rc1+ 42. Kb8 Qd8# 0-1

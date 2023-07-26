@@ -1,0 +1,41 @@
+[Event "Live Chess"]
+[Site "Chess.com"]
+[Date "2022.12.12"]
+[Round "-"]
+[White "DriedPaint"]
+[Black "Craskbee"]
+[Result "1/2-1/2"]
+[CurrentPosition "8/K7/1Pk5/n7/8/8/8/8 w - -"]
+[Timezone "UTC"]
+[ECO "E30"]
+[ECOUrl "https://www.chess.com/openings/Nimzo-Indian-Defense-Leningrad-Variation-4...h6-5.Bxf6"]
+[UTCDate "2022.12.12"]
+[UTCTime "05:36:26"]
+[WhiteElo "1670"]
+[BlackElo "921"]
+[TimeControl "180+2"]
+[Termination "Game drawn by repetition"]
+[StartTime "05:36:26"]
+[EndDate "2022.12.12"]
+[EndTime "05:47:51"]
+[Link "https://www.chess.com/game/live/64563122100"]
+[WhiteUrl "https://images.chesscomfiles.com/uploads/v1/user/32096676.21fe3c21.50x50o.9da606be262e.png"]
+[WhiteCountry "2"]
+[WhiteTitle ""]
+[BlackUrl "https://images.chesscomfiles.com/uploads/v1/user/82550022.e46da754.50x50o.bc8fc06be776.jpeg"]
+[BlackCountry "2"]
+[BlackTitle ""]
+
+1. d4 Nf6 2. c4 e6 3. Nc3 Bb4 4. Bg5 h6 5. Bxf6 Qxf6 6. e3 O-O 7. Nf3 d5 8. cxd5
+Bxc3+ 9. bxc3 exd5 10. Bd3 Re8 11. O-O Bg4 12. h3 Bxf3 13. Qxf3 Qxf3 14. gxf3
+Nc6 15. Kh2 a6 16. Rg1 b5 17. Rg3 b4 18. c4 dxc4 19. Bxc4 Na5 20. Bd5 Rab8 21.
+Rag1 g6 22. Rxg6+ Kh7 23. Rg7+ Kh8 24. Bxf7 Re7 25. Rg8+ Rxg8 26. Bxg8 Rg7 27.
+Be6 Rxg1 28. Kxg1 Kg7 29. d5 c5 30. dxc6 Nxc6 31. Bc4 a5 32. f4 Kf6 33. f3 h5
+34. e4 h4 35. Kf2 Nd4 36. Ke3 Nc2+ 37. Kd2 Nd4 38. e5+ Kf5 39. Kd3 Nxf3 40. e6
+Kf6 41. Ke3 Ne1 42. f5 Nc2+ 43. Ke4 a4 44. Bb5 b3 45. axb3 a3 46. Kd3 Nb4+ 47.
+Kc3 a2 48. Kb2 a1=Q+ 49. Kxa1 Nc2+ 50. Kb2 Nb4 51. Kc3 Nd5+ 52. Kd4 Nc7 53. Ke3
+Nxb5 54. Kf4 Nc7 55. Kg4 Nd5 56. Kxh4 Ne3 57. Kh5 Nxf5 58. b4 Kxe6 59. Kg5 Nd6
+60. h4 Nb5 61. h5 Kf7 62. Kf5 Kg8 63. Kf6 Kh7 64. Kg5 Kg7 65. h6+ Kh7 66. Kh5
+Kg8 67. Kg6 Kh8 68. h7 Nd6 69. Kh6 Nf5+ 70. Kg6 Nd6 71. Kf6 Kxh7 72. Ke6 Nc4 73.
+b5 Kg7 74. Kd5 Na5 75. b6 Kf8 76. Kd6 Ke8 77. Kc7 Ke7 78. Kb8 Kd7 79. Ka7 Kc6
+80. Ka6 Nb7 81. Ka7 Na5 82. Ka6 Nb7 83. Ka7 Na5 1/2-1/2
