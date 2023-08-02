@@ -19,6 +19,23 @@ class GameState():
         self.board[move.endRow][move.endCol] = move.pieceMoved
         self.moveLog.append(move)
         self.whiteToMove = not self.whiteToMove
+    
+    #Moves considering legality
+    # def getValidMoves(self):
+    #     return self.getAllPossibleMoves()
+
+    # #Moves not considering checks
+    # def getAllPossibleMoves(self):
+    #     moves = []
+    #     for r in range (len(self.board)):
+    #         for c in range (len(self.board[r])):
+    #             turn = self.board[r][c][0]
+    #             if (turn == 'w' and self.whiteToMove) and (turn == 'b' and not self.whiteToMove):
+    #                 piece = self.board[r][c][1]
+
+
+
+
 
 class Move():
     ranksToRows = {"1":7,"2":6,"3":5,"4":4,

@@ -44,6 +44,8 @@ def main():
                 if len(playerClicks) == 2:
                     move = gameState.Move(playerClicks[0],playerClicks[1],gs.board)
                     print(move.getChessNotation())
+                    newMove = convertNotation(move)
+                    print(newMove)
                     gs.makeMove(move)
                     sqSelected = ()
                     playerClicks = []
@@ -70,7 +72,30 @@ def drawPieces(screen,board):
               if piece != "--":
                   screen.blit(IMAGES[piece],p.Rect(c*SQUARE_SIZE,r*SQUARE_SIZE,SQUARE_SIZE,SQUARE_SIZE))
 
-
+def convertNotation(move):    
+    pieceMoved = move.pieceMoved
+    pieceCaptured = move.pieceCaptured
+    startSq = (move.getChessNotation())[0:1]
+    endSq = (move.getChessNotation())[2:]
+    if int(pieceMoved == 'wp') | int(pieceMoved == 'bp'):
+        #Notation for pawn moves is only the square rank+file
+        if(pieceCaptured == '--'):
+            newNotation = endSq
+            return newNotation
+        else:
+            startSq = startSq[0]
+            newNotation = startSq+'x'+endSq
+            return newNotation
+    else:
+        #Other pieces have a letter indicating which piece it is
+        if(pieceCaptured == '--'):
+            pieceMoved = pieceMoved[1]
+            newNotation = pieceMoved + endSq
+            return newNotation
+        else:
+            pieceMoved = pieceMoved[1]
+            newNotation = pieceMoved +'x' + endSq
+            return newNotation
 
 if __name__ == "__main__":
     main()
