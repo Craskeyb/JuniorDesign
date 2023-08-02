@@ -43,10 +43,10 @@ def main():
                     playerClicks.append(sqSelected)
                 if len(playerClicks) == 2:
                     move = gameState.Move(playerClicks[0],playerClicks[1],gs.board)
-                    print(move.getChessNotation())
                     newMove = convertNotation(move)
-                    print(newMove)
+                    print(boardToFen(gs.board))
                     gs.makeMove(move)
+                    print(boardToFen(gs.board))
                     sqSelected = ()
                     playerClicks = []
                     
@@ -73,10 +73,12 @@ def drawPieces(screen,board):
                   screen.blit(IMAGES[piece],p.Rect(c*SQUARE_SIZE,r*SQUARE_SIZE,SQUARE_SIZE,SQUARE_SIZE))
 
 def convertNotation(move):    
+    #Extracting necessary information from the move object
     pieceMoved = move.pieceMoved
     pieceCaptured = move.pieceCaptured
     startSq = (move.getChessNotation())[0:1]
     endSq = (move.getChessNotation())[2:]
+    
     if int(pieceMoved == 'wp') | int(pieceMoved == 'bp'):
         #Notation for pawn moves is only the square rank+file
         if(pieceCaptured == '--'):
@@ -96,6 +98,92 @@ def convertNotation(move):
             pieceMoved = pieceMoved[1]
             newNotation = pieceMoved +'x' + endSq
             return newNotation
+
+#Function to convert FEN format to a board usable with our interface
+def fenToBoard(fen):
+    boardState = []
+    curRow = []
+    for i in range(len(fen)):
+        if len(curRow == 8):
+            boardState.append(curRow)
+            curRow = []
+        if fen[i] == 'r':
+            curRow.append("bR")
+        elif fen[i] == 'k':
+            curRow.append("bK")
+        elif fen[i] == 'q':
+            curRow.append("bQ")
+        elif fen[i] == 'n':
+            curRow.append("bN")
+        elif fen[i] == 'p':
+            curRow.append("bp") 
+        elif fen[i] == 'b':
+            curRow.append("bB") 
+        elif fen[i] == 'K':
+            curRow.append("wK")    
+        elif fen[i] == 'R':
+            curRow.append("wR")
+        elif fen[i] == 'Q':
+            curRow.append("wQ")
+        elif fen[i] == 'N':
+            curRow.append("wN")
+        elif fen[i] == 'P':
+            curRow.append("wp") 
+        elif fen[i] == 'B':
+            curRow.append("wB")
+        elif fen[i] == '/':
+            continue
+        else:
+            count = int(fen[i])
+            for k in range(count):
+                curRow.append("--") 
+    return boardState 
+
+#Function to convert our usable board into a FEN
+def boardToFen(board):
+    fen = ''
+    for i in range(0,len(board)):
+        print(board[i])
+        for j in range(len(board[i])):
+            if board[i][j] == 'bR':
+                fen+="r"
+            elif board[i][j] == 'bK':
+                fen+="k"
+            elif board[i][j] == 'bQ':
+                fen+="q"
+            elif board[i][j] == 'bN':
+                fen+="n"
+            elif board[i][j] == 'bp':
+                fen+="p" 
+            elif board[i][j] == 'bB':
+                fen+="b" 
+            elif board[i][j] == 'wK':
+                fen+="K"    
+            elif board[i][j] == 'wR':
+                fen+="R"
+            elif board[i][j] == 'wQ':
+                fen+="Q"
+            elif board[i][j] == 'wN':
+                fen+="N"
+            elif board[i][j] == 'wp':
+                fen+="P" 
+            elif board[i][j] == 'wB':
+                fen+="B"    
+            else:
+                curFen = fen[len(fen)-1]
+                if(curFen=='1' or curFen=='2' or curFen=='3' or curFen=='4' or curFen=='5' or curFen=='6' or curFen=='7' or curFen=='8'):
+                    continue
+                else:
+                    counter = 0
+                    for k in range(j,len(board[i])):
+                        if board[i][k]=='--':
+                            counter+=1
+                        else:
+                            break
+                    fen+=str(counter)
+        fen+='/'
+    return fen[:-1]
+
 
 if __name__ == "__main__":
     main()
