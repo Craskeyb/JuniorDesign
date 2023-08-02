@@ -44,9 +44,16 @@ def main():
                 if len(playerClicks) == 2:
                     move = gameState.Move(playerClicks[0],playerClicks[1],gs.board)
                     newMove = convertNotation(move)
-                    print(boardToFen(gs.board))
+                    fen1=boardToFen(gs.board)
+                    newBoard=fenToBoard(fen1)
+                    print(gs.board)
+                    print("\n\n\n")
+                    print(newBoard)
+                    if(newBoard == gs.board):
+                        print("Fen to board conversion successful!")
+                    else:
+                        print("Something's wrong with the conversion!")
                     gs.makeMove(move)
-                    print(boardToFen(gs.board))
                     sqSelected = ()
                     playerClicks = []
                     
@@ -103,10 +110,7 @@ def convertNotation(move):
 def fenToBoard(fen):
     boardState = []
     curRow = []
-    for i in range(len(fen)):
-        if len(curRow == 8):
-            boardState.append(curRow)
-            curRow = []
+    for i in range(len(fen)): 
         if fen[i] == 'r':
             curRow.append("bR")
         elif fen[i] == 'k':
@@ -132,18 +136,19 @@ def fenToBoard(fen):
         elif fen[i] == 'B':
             curRow.append("wB")
         elif fen[i] == '/':
-            continue
+            boardState.append(curRow)
+            curRow = []
         else:
             count = int(fen[i])
             for k in range(count):
-                curRow.append("--") 
+                curRow.append("--")
+    boardState.append(curRow)
     return boardState 
 
 #Function to convert our usable board into a FEN
 def boardToFen(board):
     fen = ''
     for i in range(0,len(board)):
-        print(board[i])
         for j in range(len(board[i])):
             if board[i][j] == 'bR':
                 fen+="r"
