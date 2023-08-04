@@ -85,24 +85,43 @@ def main():
                         playerClicks.append(sqSelected)
                     if len(playerClicks) == 2:
                         move = gameState.Move(playerClicks[0],playerClicks[1],gs.board)
-                        gs.makeMove(move)
-                        checkBoard.push(moveArr[curMove])
-                        curMove+=1
-                        if(boardToFen(gs.board) != checkBoard.board_fen()):
-                            print('That move was incorrect! Please restart the program to try again')
-                            running = False
+                        #Checking only columns because from 4 to 0,1 or 6,7 would normally be illegal, so the squares do not really matter for a player using legal moves
+                        #Col also needs to be passed to the function so we can tell what side is attempting to be castled to
+                        if (move.pieceMoved == 'bK' and move.startCol == 4 and move.startRow == 0 and (move.endCol == 1 or move.endCol == 0 or move.endCol == 6 or move.endCol == 7)):
+                            gs.board = castling(gs.board, move.endCol, 'b')
+                            gs.whiteToMove = not gs.whiteToMove
+                            checkBoard.push(moveArr[curMove])
+                            curMove+=1
+                            if(boardToFen(gs.board) != checkBoard.board_fen()):
+                                print('That move was incorrect! The correct move was: ' + str(moveArr[curMove]) + 'Please restart the program to try again')
+                                running = False
+                            sqSelected = ()
+                            playerClicks = []
+                        elif (move.pieceMoved == 'wK' and move.startCol == 4 and move.startRow == 7 and (move.endCol == 1 or move.endCol == 0 or move.endCol == 6 or move.endCol == 7)):
+                            gs.board = castling(gs.board, move.endCol, 'w')
+                            gs.whiteToMove = not gs.whiteToMove
+                            checkBoard.push(moveArr[curMove])
+                            curMove+=1
+                            if(boardToFen(gs.board) != checkBoard.board_fen()):
+                                print('That move was incorrect! The correct move was: ' + str(moveArr[curMove]) + 'Please restart the program to try again')
+                                running = False
+                            sqSelected = ()
+                            playerClicks = []
                         else:
-                            print("Correct!")
-                        sqSelected = ()
-                        playerClicks = []
+                            gs.makeMove(move)
+                            checkBoard.push(moveArr[curMove])
+                            curMove+=1
+                            if(boardToFen(gs.board) != checkBoard.board_fen()):
+                                print('That move was incorrect! The correct move was: ' + str(moveArr[curMove]) + 'Please restart the program to try again')
+                                running = False
+                            sqSelected = ()
+                            playerClicks = []
                         
             drawGameState(screen,gs)
             clock.tick(MAX_FPS)
             p.display.flip()
 
     else:        
-        #TODO: add correct prompts/messaging for random mode
-        #print('You selected: '+userGame.headers['White']+ ' vs. ' + userGame.headers['Black'])
         gameIndex = random.randint(0, len(gameList)-1)
         userGame = gameList[gameIndex]
         moveArr = []
@@ -159,15 +178,40 @@ def main():
                         playerClicks.append(sqSelected)
                     if len(playerClicks) == 2:
                         move = gameState.Move(playerClicks[0],playerClicks[1],gs.board)
-                        gs.makeMove(move)
-                        checkBoard.push(moveArr[curMove])
-                        curMove+=1
-                        if(boardToFen(gs.board) != checkBoard.board_fen()):
-                            print('That move was incorrect! Please restart the program to try again')
-                            running = False
-                        sqSelected = ()
-                        playerClicks = []
-                    
+                        print(move.pieceMoved + move.startRow + move.startCol + move.endCol)
+                        #Checking only columns because from 4 to 0,1 or 6,7 would normally be illegal, so the squares do not really matter for a player using legal moves
+                        #Col also needs to be passed to the function so we can tell what side is attempting to be castled to
+                        if (move.pieceMoved == 'bK' and move.startCol == 4 and move.startRow == 0 and (move.endCol == 1 or move.endCol == 0 or move.endCol == 6 or move.endCol == 7)):
+                            print('Inside black castling function')
+                            gs.board = castling(gs.board, move.endCol, 'b')
+                            gs.whiteToMove = not gs.whiteToMove
+                            checkBoard.push(moveArr[curMove])
+                            curMove+=1
+                            if(boardToFen(gs.board) != checkBoard.board_fen()):
+                                print('That move was incorrect! The correct move was: ' + str(moveArr[curMove]) + 'Please restart the program to try again')
+                                running = False
+                            sqSelected = ()
+                            playerClicks = []
+                        elif (move.pieceMoved == 'wK' and move.startCol == 4 and move.startRow == 7 and (move.endCol == 1 or move.endCol == 0 or move.endCol == 6 or move.endCol == 7)):
+                            gs.board = castling(gs.board, move.endCol, 'w')
+                            gs.whiteToMove = not gs.whiteToMove
+                            checkBoard.push(moveArr[curMove])
+                            curMove+=1
+                            if(boardToFen(gs.board) != checkBoard.board_fen()):
+                                print('That move was incorrect! The correct move was: ' + str(moveArr[curMove]) + 'Please restart the program to try again')
+                                running = False
+                            sqSelected = ()
+                            playerClicks = []
+                        else:
+                            gs.makeMove(move)
+                            checkBoard.push(moveArr[curMove])
+                            curMove+=1
+                            if(boardToFen(gs.board) != checkBoard.board_fen()):
+                                print('That move was incorrect! The correct move was: ' + str(moveArr[curMove]) + 'Please restart the program to try again')
+                                running = False
+                            sqSelected = ()
+                            playerClicks = []
+                        
             drawGameState(screen,gs)
             clock.tick(MAX_FPS)
             p.display.flip()
@@ -284,6 +328,33 @@ def boardToFen(board):
         fen+='/'
     return fen[:-1]
 
+#Function that generates a board that is a castled version of the previous position to solve the castling issue
+def castling(uncastled_board, endCol, color):
+    if color == 'b':
+        if endCol == 6 or endCol == 7:
+            uncastled_board[0][4] = "--"
+            uncastled_board[0][5] = "bR"
+            uncastled_board[0][6] = "bK"
+            uncastled_board[0][7] = "--"
+        else:
+            uncastled_board[0][4] = "--"
+            uncastled_board[0][3] = "--"
+            uncastled_board[0][2] = "bR"
+            uncastled_board[0][1] = "bK"
+            uncastled_board[0][0] = "--"
+    if color == 'w':
+        if endCol == 6 or endCol == 7:
+            uncastled_board[7][4] = "--"
+            uncastled_board[7][5] = "wR"
+            uncastled_board[7][6] = "wK"
+            uncastled_board[7][7] = "--"
+        else:
+            uncastled_board[7][4] = "--"
+            uncastled_board[7][3] = "--"
+            uncastled_board[7][2] = "wR"
+            uncastled_board[7][1] = "wK"
+            uncastled_board[7][0] = "--"
+    return uncastled_board
 
 if __name__ == "__main__":
     main()
