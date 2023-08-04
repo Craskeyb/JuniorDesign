@@ -7,6 +7,7 @@ import chess.pgn
 from pgnReader import gameRead
 from chessboard import display
 import gameState
+import random
 
 WIDTH = HEIGHT = 512
 DIMENSION = 8
@@ -39,9 +40,9 @@ def main():
     #initializing the GameState object
     gs = gameState.GameState()
     userGame = None
-    #initialize one board for the interactive board, and one board to check the moves against
+    #initialize board for the gameState object
     checkBoard = chess.Board()
-    gameBoard = chess.Board()
+
 
     if(mode.upper() == 'S'):
         print("Available games: ")
@@ -51,7 +52,7 @@ def main():
             print('('+str(i+1)+') '+white+' vs. '+black)
         index = input("Please select a number from the list of available games: ")
         userGame = gameList[int(index)-1]
-        convertedBoard = fenToBoard(gameBoard.board_fen())
+        convertedBoard = fenToBoard(checkBoard.board_fen())
         gs.board = convertedBoard
 
         print('You selected: '+userGame.headers['White']+ ' vs. ' + userGame.headers['Black'])
@@ -90,6 +91,8 @@ def main():
                         if(boardToFen(gs.board) != checkBoard.board_fen()):
                             print('That move was incorrect! Please restart the program to try again')
                             running = False
+                        else:
+                            print("Correct!")
                         sqSelected = ()
                         playerClicks = []
                         
@@ -98,7 +101,76 @@ def main():
             p.display.flip()
 
     else:        
-            gs = gameState.GameState()
+        #TODO: add correct prompts/messaging for random mode
+        #print('You selected: '+userGame.headers['White']+ ' vs. ' + userGame.headers['Black'])
+        gameIndex = random.randint(0, len(gameList)-1)
+        userGame = gameList[gameIndex]
+        moveArr = []
+        for moves in userGame.mainline_moves():
+            moveArr.append(moves)
+
+        startingMove = random.randint(6,len(moveArr)-12)
+        curMove = startingMove-1
+        for i in range(startingMove-1):
+            checkBoard.push(moveArr[i])
+        gs.board = fenToBoard(checkBoard.board_fen())
+        #Driving code for the game
+        p.init()
+        screen = p.display.set_mode((WIDTH,HEIGHT))
+        clock = p.time.Clock()
+        screen.fill(p.Color("white"))
+        loadImages()
+        running = True
+        sqSelected = ()
+        playerClicks = []
+        
+        drawGameState(screen,gs)
+        clock.tick(MAX_FPS)
+        p.display.flip()
+
+        #First prompt user for the name of the players in the game
+        while(1):
+            whitePl = input("Before making any moves, please identify the players in the game starting with the white side: ")
+            if(whitePl.upper() != userGame.headers['White'].upper()):
+                print("That is incorrect, please try again!")
+                continue
+            blackPl = input("That is correct! Now please identify the player for the black pieces: ")
+            if(blackPl.upper() != userGame.headers['Black'].upper()):
+                print('That is incorrect, please try again!')
+                continue
+            else:
+                print("That is correct, good luck with the remaining moves!")
+                break
+
+        while running:
+            
+            for e in p.event.get():
+                if e.type == p.QUIT:
+                    running = False
+                elif e.type == p.MOUSEBUTTONDOWN:
+                    location = p.mouse.get_pos()
+                    col = location[0]//SQUARE_SIZE
+                    row = location[1]//SQUARE_SIZE
+                    if(sqSelected == (row,col)):
+                        sqSelected = ()
+                        playerClicks = []
+                    else:
+                        sqSelected = (row,col)
+                        playerClicks.append(sqSelected)
+                    if len(playerClicks) == 2:
+                        move = gameState.Move(playerClicks[0],playerClicks[1],gs.board)
+                        gs.makeMove(move)
+                        checkBoard.push(moveArr[curMove])
+                        curMove+=1
+                        if(boardToFen(gs.board) != checkBoard.board_fen()):
+                            print('That move was incorrect! Please restart the program to try again')
+                            running = False
+                        sqSelected = ()
+                        playerClicks = []
+                    
+            drawGameState(screen,gs)
+            clock.tick(MAX_FPS)
+            p.display.flip()
 
     
 
@@ -119,33 +191,6 @@ def drawPieces(screen,board):
               piece = board[r][c]
               if piece != "--":
                   screen.blit(IMAGES[piece],p.Rect(c*SQUARE_SIZE,r*SQUARE_SIZE,SQUARE_SIZE,SQUARE_SIZE))
-
-def convertNotation(move):    
-    #Extracting necessary information from the move object
-    pieceMoved = move.pieceMoved
-    pieceCaptured = move.pieceCaptured
-    startSq = (move.getChessNotation())[0:1]
-    endSq = (move.getChessNotation())[2:]
-    
-    if int(pieceMoved == 'wp') | int(pieceMoved == 'bp'):
-        #Notation for pawn moves is only the square rank+file
-        if(pieceCaptured == '--'):
-            newNotation = endSq
-            return newNotation
-        else:
-            startSq = startSq[0]
-            newNotation = startSq+'x'+endSq
-            return newNotation
-    else:
-        #Other pieces have a letter indicating which piece it is
-        if(pieceCaptured == '--'):
-            pieceMoved = pieceMoved[1]
-            newNotation = pieceMoved + endSq
-            return newNotation
-        else:
-            pieceMoved = pieceMoved[1]
-            newNotation = pieceMoved +'x' + endSq
-            return newNotation
 
 #Function to convert FEN format to a board usable with our interface
 def fenToBoard(fen):
