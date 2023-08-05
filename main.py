@@ -1,4 +1,6 @@
-#Utilizes python-chess library (listed in requirements.txt file)#
+# DEPRECATED FILE, WAS USED DURING TESTING FOR PGNREADER FUNCTIONALITY & FEN VISUALIZATION WITH CHESS-BOARD LIBRARY #
+
+#Utilizes python-chess & chess-board libraries (listed in requirements.txt file)#
 import chess
 import chess.pgn
 from pgnReader import gameRead
