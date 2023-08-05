@@ -4,7 +4,7 @@ Project utilizing the python-chess & pygame libraries.
 Allows you to upload PGN files of games you would like to study, and tests your recognition skills. Users can upload a minimum of 3 games, and games cannot be miniatures (<= 20 moves). The program will allow you to select a game to play through, or it will select a random middlegame position from one of the uploaded PGN files and you must correctly identify the players of the game. After that, you will be asked to identify the next move in the position.
 
 ## User Guide
-In order to use the program, first clone the repo onto your local machine. Next, upload your desired games into the 'games' directory located within the project - this is the filepath that is read from by the pgnReader function. After uploading your games, you are ready to use the program. Just run the below code in the directory containing the project:
+In order to use the program, first clone the repo onto your local machine. After cloning, verify that you have the required libraries installed. These libraries can be found with download instructions & links to documentation in the *requirements.txt* file within this project. After you have the libraries set up, you should upload your desired games into the 'games' directory located within the project - this is the filepath that is read from by the pgnReader function. After uploading your games, you are ready to use the program. Just run the below code in the directory containing the project:
   - py ChessProgram.py
 
 This will launch the program, and will prompt you to enter your files.
