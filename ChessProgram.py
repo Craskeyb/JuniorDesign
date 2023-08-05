@@ -1,5 +1,6 @@
 ### IMPLEMENTATION FOR CHESS BOARD FOUND AT: https://www.youtube.com/watch?v=o24J3WcBGLg ###
-### SUBSEQUENT VIDEOS FROM ABOVE SERIES WERE USED FOR MOVE LOGIC AS WELL ###
+
+### Junior Design Project 3 - Brett Craskey ###
 
 import pygame as p
 import chess
