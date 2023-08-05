@@ -1,3 +1,21 @@
 This program uses the python-chess library to parse PGN files and step through games.
 The documentation for this library can be found at:
   - https://pypi.org/project/chess/
+
+To install this library on your machine for use with the program, run the below command in your terminal
+  - $ pip install chess
+
+
+This program also utilizes pyGame for its interactive chessboard.
+The documentation for this library can be found at:
+  - https://www.pygame.org/docs/
+
+To install, run the below command in your terminal
+  - $ pip install pygame
+
+
+For testing purposes, the chess-board library was used. If you would like to use this library to visualize FENs, the documentation can be found at:
+  -  https://pypi.org/project/chess-board/
+
+To install, run the below command in your terminal
+  - $ pip install chess-board
